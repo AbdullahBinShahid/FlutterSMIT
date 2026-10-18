@@ -1,19 +1,31 @@
-
-import 'package:ecommercesmit/profilepage.dart';
 import 'package:flutter/material.dart';
 
-void main(){
-runApp(MyApp());
+void main() {
+  runApp(MaterialApp(home: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:ProfilePage()
+    return Scaffold(
+      appBar: AppBar(title: Text('Checkbox Example')),
+      body: Center(
+        child: Checkbox(
+          value: isChecked,
+          onChanged: (value) {
+            setState(() {
+              isChecked = value!;
+            });
+          },
+        ),
+      ),
     );
   }
 }
